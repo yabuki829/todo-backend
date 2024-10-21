@@ -63,6 +63,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "rest_framework.authtoken",
     "corsheaders",
+    "djoser",# ジェゼル
 ]
 
 MIDDLEWARE = [
@@ -158,11 +159,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.SessionAuthentication',
+        # 'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
     ],
 }
-
-
 
 AUTH_USER_MODEL = "accounts.User"
 SITE_DOMAIN = env("SITE_DOMAIN")

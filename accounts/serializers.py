@@ -11,10 +11,10 @@ class LoginSerializer(serializers.Serializer):
 
         if email and password :
             user = authenticate(request=self.context.get('request'),email=email,password=password)
-
+            
             if user is None or not user.is_active :
                 raise serializers.ValidationError("ログインが失敗しました。")
-        
+            print(user.is_authenticated)
             data['user'] = user
         return data
     

@@ -13,15 +13,16 @@ from django.http import JsonResponse
 
     # return JsonResponse(data["results"])
 def test(request):
-
-        return JsonResponse(
+    print(request.user)
+    print(request.user.is_authenticated)
+    return JsonResponse(
             {
                 "result": "サーバーに通信できています"
             }
         )
 class TodoView(APIView):
 
-    def get(self, request):
+    def get(self, request): 
         all_todo = Todo.objects.all()
         print(all_todo)
         serializer = TodoSerializer(all_todo, many=True)
